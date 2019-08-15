@@ -8,8 +8,9 @@ import 'user/user_index.dart';
 class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-        debugShowCheckedModeBanner: false, home: new MainPageWidget());
+    return new Scaffold(
+      body: SafeArea(child: new MainPageWidget()),
+    );
   }
 }
 

@@ -42,30 +42,32 @@ class HomePageIndex extends State<HomePage> {
             return <Widget>[
               _widget_menu_card(contexts),
               SliverOverlapAbsorber(
-                  handle:
-                      NestedScrollView.sliverOverlapAbsorberHandleFor(context),
-                  child: SliverAppBar(
-                      backgroundColor: Colors.transparent,
-                      pinned: true,
-                      forceElevated: innerBoxIsScrolled,
-                      title: TabBar(
-                        indicatorColor: Color(0xff4ddfa9),
-                        indicatorSize: TabBarIndicatorSize.label,
-                        unselectedLabelStyle: new TextStyle(
-                            fontSize: 17, fontWeight: FontWeight.bold),
-                        labelStyle: new TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
-                        labelColor: Colors.black,
-                        unselectedLabelColor: Color(0xff707070),
-                        indicatorWeight: 5.0,
-                        isScrollable: true,
-                        tabs: myTabs.map((HomeTabList item) {
-                          return new Tab(
-                              text: item.text == null ? '错误' : item.text);
-                        }).toList(),
-                      ),
-                    ),
+                handle:
+                    NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+                child: SliverAppBar(
+                  backgroundColor: Colors.transparent,
+                  floating: false,
+                  pinned: true,
+                  snap: false,
+                  forceElevated: innerBoxIsScrolled,
+                  title: TabBar(
+                    indicatorColor: Color(0xff4ddfa9),
+                    indicatorSize: TabBarIndicatorSize.label,
+                    unselectedLabelStyle: new TextStyle(
+                        fontSize: 17, fontWeight: FontWeight.bold),
+                    labelStyle: new TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.bold),
+                    labelColor: Colors.black,
+                    unselectedLabelColor: Color(0xff707070),
+                    indicatorWeight: 5.0,
+                    isScrollable: true,
+                    tabs: myTabs.map((HomeTabList item) {
+                      return new Tab(
+                          text: item.text == null ? '错误' : item.text);
+                    }).toList(),
                   ),
+                ),
+              ),
             ];
           },
           body: TabBarView(
@@ -86,8 +88,8 @@ class HomePageIndex extends State<HomePage> {
 
   Widget home_top_menu(BuildContext context) {
     return new Container(
-      padding: EdgeInsets.only(top: 33),
-      height: 145,
+      padding: EdgeInsets.only(top: 10),
+      height: 116,
       child: _items == null
           ? Container()
           : new ListView.builder(
