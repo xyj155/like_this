@@ -23,7 +23,7 @@ class MessagePageIndex extends StatelessWidget {
                     fontSize: 31,
                     fontWeight: FontWeight.bold,
                     color: Colors.black)),
-            padding: new EdgeInsets.only(top: 46, left: 20, bottom: 20)),
+            padding: new EdgeInsets.only(top: 16, left: 20, bottom: 20)),
         new ListTile(
           title: new Text(
             "回复",

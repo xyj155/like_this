@@ -21,7 +21,7 @@ class SquarePageIndex extends StatelessWidget {
         new Row(
           children: <Widget>[
             new Container(
-              padding: new EdgeInsets.only(top: 46, left: 20, bottom: 20),
+              padding: new EdgeInsets.only(top: 16, left: 20, bottom: 20),
               child: new Text("广场",
                   style: TextStyle(
                       fontSize: 31,
@@ -31,12 +31,12 @@ class SquarePageIndex extends StatelessWidget {
             ),
             new Expanded(
                 child: new Container(
-              padding: new EdgeInsets.only(top: 46, right: 14, bottom: 14),
-              alignment: Alignment.centerRight,
+              padding: new EdgeInsets.only(top: 16, right: 14, bottom: 14),
               child: new Image.asset(
                 "assert/imgs/ic_square_add_user.png",
                 width: 23,
                 height: 23,
+                alignment: Alignment.centerRight,
               ),
             ))
           ],

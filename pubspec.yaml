@@ -27,6 +27,8 @@ dependencies:
   json_serializable: ^2.0.0 # 解析
   build_runner: ^1.1.2 # 解析
   fluttertoast: ^3.1.0
+  flutter_screenutil: ^0.4.2
+  flare_flutter: ^1.2.0
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
@@ -49,14 +51,17 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assert/imgs/ic_main_tab_attention.png
-    - assert/imgs/ic_main_tab_attention_pressed.png
-    - assert/imgs/ic_main_tab_game_home.png
-    - assert/imgs/ic_main_tab_game_home_pressed.png
-    - assert/imgs/ic_main_tab_me.png
+    - assert/imgs/tabbar_project_normal.png
+    - assert/flare/Space.flr
+    - assert/imgs/tabbar_project_selected.png
+    - assert/imgs/tabbar_home_normal.png
+    - assert/imgs/tapbar_home_selected.png
+    - assert/imgs/tabbar_person_normal.png
     - assert/imgs/ic_add_normal.png
-    - assert/imgs/message_chat.png
-    - assert/imgs/message_like.png
+    - assert/imgs/tabbar_message_normal.png
+    - assert/imgs/tabbar_message_selected.png
+    - assert/imgs/ic_common_back.png
+    - assert/imgs/loading.gif
     - assert/imgs/message_reply_arrow_right.png
     - assert/imgs/message_notice_arrow_right.png
     - assert/imgs/message_chat_arrow_right.png
@@ -67,7 +72,7 @@ flutter:
     - assert/imgs/ic_square_search.png
     - assert/imgs/message_reply.png
     - assert/imgs/ic_photo.png
-    - assert/imgs/ic_main_tab_me_pressed.png
+    - assert/imgs/tabbar_person_selected.png
     - assert/imgs/center_circle.png
     - assert/imgs/ic_main_tab_msg.png
     - assert/imgs/ic_main_tab_msg_pressed.png

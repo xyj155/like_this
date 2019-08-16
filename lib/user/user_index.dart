@@ -18,7 +18,7 @@ class UserPageIndex extends StatelessWidget {
     return new Column(
       children: <Widget>[
         new Container(
-          padding: new EdgeInsets.only(top: 46, left: 20, bottom: 20),
+          padding: new EdgeInsets.only(top: 16, left: 20, bottom: 20),
           child: new Text("我的",
               style: TextStyle(
                   fontSize: 31,

@@ -1,10 +1,17 @@
 import 'dart:convert';
 
-import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:like_this/api/Api.dart';
+import 'package:like_this/home/home_post_local.dart';
+import 'package:like_this/home/home_post_observe.dart';
+import 'package:like_this/home/home_post_purse.dart';
+
+import 'package:like_this/home/home_user_topic.dart';
+
 import 'package:like_this/util/HttpUtil.dart';
 import 'package:like_this/gson/home_title_avatar_entity.dart';
+import 'package:like_this/util/RouterUtil.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -18,9 +25,9 @@ class HomePageIndex extends State<HomePage> {
   var _items;
 
   final List<HomeTabList> myTabs = <HomeTabList>[
-    new HomeTabList('推荐', new Container()),
-    new HomeTabList('附近', new Container()),
-    new HomeTabList('关注', new Container())
+    new HomeTabList('推荐', new HomePostPurse()),
+    new HomeTabList('附近', new HomePostLocal()),
+    new HomeTabList('关注', new HomePostObserve())
   ];
 
   Widget _widget_menu_card(BuildContext contexts) {
@@ -91,7 +98,7 @@ class HomePageIndex extends State<HomePage> {
       padding: EdgeInsets.only(top: 10),
       height: 116,
       child: _items == null
-          ? Container()
+          ? CupertinoActivityIndicator()
           : new ListView.builder(
               itemCount: _items.length,
               itemBuilder: homeTitleItemView,
@@ -113,28 +120,61 @@ class HomePageIndex extends State<HomePage> {
   Widget homeTitleItemView(BuildContext context, int index) {
     HomeTitleAvatarData model = this._items[index];
     return new Container(
-      child: new Column(
-        children: <Widget>[
-          new Container(
-            child: CircleAvatar(
-              radius: 28,
-              backgroundImage: NetworkImage("${model.activePicture}"),
+      child: new GestureDetector(
+        child: new Column(
+          children: <Widget>[
+            new Container(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(28),
+                child: FadeInImage.assetNetwork(
+                  placeholder: "assert/imgs/loading.gif",
+                  image: "${model.activePicture}",
+                  fit: BoxFit.cover,
+                  width: 56,
+                  height: 56,
+                ),
+              ),
+              decoration: new BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(40.0)),
+                border: new Border.all(width: 4, color: Color(0xff4ddfa9)),
+              ),
             ),
-            decoration: new BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(40.0)),
-              border: new Border.all(width: 4, color: Color(0xff4ddfa9)),
-            ),
-          ),
-          new Text(
-            "${model.activeName}",
-            style: new TextStyle(
-                fontWeight: FontWeight.bold, color: Color(0xff000000)),
-          )
-        ],
+            new Text(
+              "${model.activeName}",
+              style: new TextStyle(
+                  fontWeight: FontWeight.bold, color: Color(0xff000000)),
+            )
+          ],
+        ),
+        onTap: () {
+          _onListItemTap(context, index);
+        },
       ),
       margin: EdgeInsets.all(10),
     );
+  }
+}
+
+void _onListItemTap(
+  BuildContext context,
+  int index,
+) {
+  if (index == 0) {
+    Navigator.push<String>(
+        context,
+        new PageRouteBuilder(pageBuilder: (BuildContext context,
+            Animation<double> animation, Animation<double> secondaryAnimation) {
+          // 跳转的路由对象
+          return new UserTopicPage();
+        }, transitionsBuilder: (
+          BuildContext context,
+          Animation<double> animation,
+          Animation<double> secondaryAnimation,
+          Widget child,
+        ) {
+          return CustomRouteSlide.createTransition(animation, child);
+        }));
   }
 }
 
@@ -167,9 +207,8 @@ class SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
 }
 
 class HomeTabList {
-  //商品列表 tab包装 类
   String text;
-  Container goodList;
+  Widget goodList;
 
   HomeTabList(this.text, this.goodList);
 }

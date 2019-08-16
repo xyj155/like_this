@@ -69,14 +69,6 @@ class HttpUtil {
     try {
       response = await dio.get(url,
           queryParameters: data, options: options, cancelToken: cancelToken);
-      print('get success---------${response.statusCode}');
-      print('get success---------${response.data}');
-
-//      response.data; 响应体
-//      response.headers; 响应头
-//      response.request; 请求体
-//      response.statusCode; 状态码
-
     } on DioError catch (e) {
       print('get error---------$e');
       formatError(e);
@@ -92,7 +84,6 @@ class HttpUtil {
     try {
       response = await dio.post(url,
           queryParameters: data, options: options, cancelToken: cancelToken);
-      print('post success---------${response.data}');
     } on DioError catch (e) {
       print('post error---------$e');
       formatError(e);

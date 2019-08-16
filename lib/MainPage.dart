@@ -58,21 +58,19 @@ class MainPageState extends State<MainPageWidget> {
    * 根据image路径获取图片
    */
   Image getTabImage(path) {
-    return new Image.asset(path, width: 24.0, height: 24.0);
+    return new Image.asset(path, width: 27.0, height: 27.0);
   }
 
   void initData() {
-    /*
-     * 初始化选中和未选中的icon
-     */
+
     tabImages = [
       [
-        getTabImage('assert/imgs/ic_main_tab_game_home.png'),
-        getTabImage('assert/imgs/ic_main_tab_game_home_pressed.png')
+        getTabImage('assert/imgs/tapbar_home_selected.png'),
+        getTabImage('assert/imgs/tabbar_home_normal.png')
       ],
       [
-        getTabImage('assert/imgs/ic_main_tab_attention.png'),
-        getTabImage('assert/imgs/ic_main_tab_attention_pressed.png')
+        getTabImage('assert/imgs/tabbar_project_normal.png'),
+        getTabImage('assert/imgs/tabbar_project_selected.png')
       ],
       [
         getTabImage('assert/imgs/ic_main_tab_attention.png'),
@@ -80,12 +78,12 @@ class MainPageState extends State<MainPageWidget> {
       ],
 
       [
-        getTabImage('assert/imgs/ic_main_tab_msg.png'),
-        getTabImage('assert/imgs/ic_main_tab_msg_pressed.png')
+        getTabImage('assert/imgs/tabbar_message_normal.png'),
+        getTabImage('assert/imgs/tabbar_message_selected.png')
       ],
       [
-        getTabImage('assert/imgs/ic_main_tab_me.png'),
-        getTabImage('assert/imgs/ic_main_tab_me_pressed.png')
+        getTabImage('assert/imgs/tabbar_person_normal.png'),
+        getTabImage('assert/imgs/tabbar_person_selected.png')
       ]
     ];
     /*
